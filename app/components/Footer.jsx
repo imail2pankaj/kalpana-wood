@@ -1,10 +1,29 @@
 "use client";
-import { Phone, MessageCircle, MapPin, TreePine, Instagram } from "lucide-react";
+import { Phone, MessageCircle, MapPin, TreePine } from "lucide-react";
 import { useLang } from "../context/LanguageContext";
 
 export default function Footer() {
   const { t } = useLang();
   const year = new Date().getFullYear();
+
+  const InstagramIcon = ({ className }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
   
   const quickLinks = [
     [t.navHome,     "#home"],
@@ -22,7 +41,7 @@ export default function Footer() {
   const socials = [
     { id: "footer-phone-btn",    href: "tel:+919879254882",   icon: Phone,         label: "Call us",    external: false },
     { id: "footer-whatsapp-btn", href: "http://wa.me/9879254882?text=I%20want%20to%20make%20custom%20furniture", icon: MessageCircle, label: "WhatsApp", external: true },
-    { id: "footer-instagram-btn", href: "https://instagram.com/kalpana_wood", icon: Instagram, label: "Instagram", external: true },
+    { id: "footer-instagram-btn", href: "https://instagram.com/kalpana_wood", icon: InstagramIcon, label: "Instagram", external: true },
     { id: "footer-maps-btn",     href: "https://maps.google.com/?q=Lati+Plot+Main+Rd,+Morbi,+Gujarat+363641", icon: MapPin, label: "Google Maps", external: true },
   ];
 
