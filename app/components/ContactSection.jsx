@@ -1,44 +1,48 @@
+"use client";
 import { Phone, MessageCircle, MapPin, Clock, ArrowRight } from "lucide-react";
-
-const contactDetails = [
-  {
-    id: "phone",
-    icon: Phone,
-    label: "Phone / Call",
-    value: "+91 98792 54882",
-    href: "tel:+919879254882",
-    action: "Call Now",
-    color: "from-[#c97d20] to-[#8f4a16]",
-    external: false,
-  },
-  {
-    id: "whatsapp",
-    icon: MessageCircle,
-    label: "WhatsApp",
-    value: "Chat & Order Instantly",
-    href: "http://wa.me/9879254882?text=I%20want%20to%20make%20custom%20furniture",
-    action: "Open WhatsApp",
-    color: "from-[#25d366] to-[#128c7e]",
-    external: true,
-  },
-  {
-    id: "address",
-    icon: MapPin,
-    label: "Workshop Address",
-    value: "Street 4–5, Lati Plot Main Rd, Morbi, Gujarat 363641",
-    href: "https://maps.google.com/?q=Street+4-5,+Lati+Plot+Main+Rd,+Morbi,+Gujarat+363641",
-    action: "View on Map",
-    color: "from-[#743b16] to-[#351706]",
-    external: true,
-  },
-];
-
-const hours = [
-  { day: "Monday – Saturday", time: "9:00 AM – 8:00 PM" },
-  { day: "Sunday",            time: "10:00 AM – 5:00 PM" },
-];
+import { useLang } from "../context/LanguageContext";
 
 export default function ContactSection() {
+  const { t } = useLang();
+  
+  const contactDetails = [
+    {
+      id: "phone",
+      icon: Phone,
+      label: t.contactPhone,
+      value: t.contactPhoneVal,
+      href: "tel:+919879254882",
+      action: t.contactPhoneAction,
+      color: "from-[#c97d20] to-[#8f4a16]",
+      external: false,
+    },
+    {
+      id: "whatsapp",
+      icon: MessageCircle,
+      label: t.contactWa,
+      value: t.contactWaVal,
+      href: "http://wa.me/9879254882?text=I%20want%20to%20make%20custom%20furniture",
+      action: t.contactWaAction,
+      color: "from-[#25d366] to-[#128c7e]",
+      external: true,
+    },
+    {
+      id: "address",
+      icon: MapPin,
+      label: t.contactMap,
+      value: t.contactMapVal,
+      href: "https://maps.google.com/?q=Street+4-5,+Lati+Plot+Main+Rd,+Morbi,+Gujarat+363641",
+      action: t.contactMapAction,
+      color: "from-[#743b16] to-[#351706]",
+      external: true,
+    },
+  ];
+
+  const hours = [
+    { day: t.hoursD1, time: t.hoursT1 },
+    { day: t.hoursD2, time: t.hoursT2 },
+  ];
+
   return (
     <section id="contact" className="py-24 lg:py-32 bg-[#fdf8f0] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,7 +52,7 @@ export default function ContactSection() {
           <div className="flex items-center justify-center gap-3 mb-5">
             <div className="wood-divider" />
             <span className="text-[#c97d20] text-xs font-inter font-semibold tracking-[0.18em] uppercase">
-              Get In Touch
+              {t.contactLabel}
             </span>
             <div className="wood-divider" />
           </div>
@@ -56,12 +60,11 @@ export default function ContactSection() {
             className="font-playfair font-bold text-[#351706] mb-4"
             style={{ fontSize: "clamp(2rem, 3.5vw, 2.75rem)" }}
           >
-            Contact{" "}
-            <span className="text-[#c97d20] italic">Kalpana Wood</span>
+            {t.contactHeading1}{" "}
+            <span className="text-[#c97d20] italic">{t.contactHeading2}</span>
           </h2>
           <p className="text-[#5e3115]/70 font-inter max-w-xl mx-auto">
-            Ready to start your custom furniture project? Reach out to Kalpesh
-            M. Makwana directly — we're happy to discuss your requirements.
+            {t.contactSub}
           </p>
         </div>
 
@@ -106,7 +109,7 @@ export default function ContactSection() {
                   <Clock className="w-5 h-5" />
                 </div>
                 <h3 className="font-playfair font-semibold text-[#351706] text-base">
-                  Workshop Hours
+                  {t.hoursHeading}
                 </h3>
               </div>
               <div className="space-y-2">
@@ -120,7 +123,7 @@ export default function ContactSection() {
               <div className="mt-4 flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                 <span className="text-green-700 font-inter text-xs font-medium">
-                  Open Now — Walk-ins Welcome
+                  {t.openNow}
                 </span>
               </div>
             </div>
@@ -144,9 +147,9 @@ export default function ContactSection() {
                 <MapPin className="w-5 h-5 text-[#e8bb6e]" />
               </div>
               <div className="flex-1">
-                <div className="text-white font-inter font-semibold text-sm">Kalpana Wood Workshop</div>
+                <div className="text-white font-inter font-semibold text-sm">{t.mapWorkshop}</div>
                 <div className="text-white/60 font-inter text-xs mt-0.5">
-                  Street 4–5, Lati Plot Main Rd, Morbi, Gujarat 363641
+                  {t.mapAddress}
                 </div>
               </div>
               <a
@@ -155,7 +158,7 @@ export default function ContactSection() {
                 id="contact-directions-btn"
                 className="flex-shrink-0 px-4 py-2 rounded-full bg-[#c97d20] text-white text-xs font-inter font-semibold hover:bg-[#e8bb6e] hover:text-[#351706] transition-colors"
               >
-                Directions
+                {t.directions}
                 <ArrowRight className="w-3 h-3 inline ml-1" />
               </a>
             </div>

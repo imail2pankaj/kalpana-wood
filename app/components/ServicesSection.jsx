@@ -1,64 +1,68 @@
+"use client";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-
-const products = [
-  {
-    id: "bedroom-set",
-    title: "Bedroom Sets",
-    description: "Complete custom bedroom furniture — beds, wardrobes, dressing units, and side tables crafted from premium hardwood.",
-    image: "/product_bedroom.png",
-    tag: "Most Popular",
-    tagColor: "bg-[#c97d20]",
-    waText: "Bedroom Set",
-  },
-  {
-    id: "dining-set",
-    title: "Dining Tables & Chairs",
-    description: "Solid wood dining sets for every family size. From 4-seater to 12-seater, custom dimensions available.",
-    image: "/product_dining.png",
-    tag: "Premium",
-    tagColor: "bg-[#8f4a16]",
-    waText: "Dining Table Set",
-  },
-  {
-    id: "wardrobe",
-    title: "Wardrobes & Almirahs",
-    description: "Custom-designed wardrobes with sliding or hinged doors, internal shelving, mirror panels and more.",
-    image: "/product_wardrobe.png",
-    tag: "Custom",
-    tagColor: "bg-[#5e3115]",
-    waText: "Wardrobe",
-  },
-  {
-    id: "sofa-set",
-    title: "Sofa & Drawing Room Sets",
-    description: "Hand-carved wooden sofa frames with your choice of fabric. Traditional to contemporary styles available.",
-    image: "/product_sofa.png",
-    tag: "Artisan",
-    tagColor: "bg-[#743b16]",
-    waText: "Sofa Set",
-  },
-  {
-    id: "wooden-doors",
-    title: "Wooden Doors & Windows",
-    description: "Solid teak and hardwood doors with intricate carved panel designs. Built for longevity and elegance.",
-    image: "/product_door.png",
-    tag: "Heritage",
-    tagColor: "bg-[#b06318]",
-    waText: "Wooden Door",
-  },
-  {
-    id: "wood-articles",
-    title: "Wood Working Articles",
-    description: "Decorative wooden items, custom cabinets, shelves, TV units, pooja units, and all kinds of wood-based articles.",
-    image: "/furniture_collection.png",
-    tag: "Specialty",
-    tagColor: "bg-[#c97d20]",
-    waText: "Wood Working Articles",
-  },
-];
+import { useLang } from "../context/LanguageContext";
 
 export default function ServicesSection() {
+  const { t } = useLang();
+  
+  const products = [
+    {
+      id: "bedroom-set",
+      title: t.products.bedroom.title,
+      description: t.products.bedroom.desc,
+      image: "/product_bedroom.png",
+      tag: t.products.bedroom.tag,
+      tagColor: "bg-[#c97d20]",
+      waText: "Bedroom Set",
+    },
+    {
+      id: "dining-set",
+      title: t.products.dining.title,
+      description: t.products.dining.desc,
+      image: "/product_dining.png",
+      tag: t.products.dining.tag,
+      tagColor: "bg-[#8f4a16]",
+      waText: "Dining Table Set",
+    },
+    {
+      id: "wardrobe",
+      title: t.products.wardrobe.title,
+      description: t.products.wardrobe.desc,
+      image: "/product_wardrobe.png",
+      tag: t.products.wardrobe.tag,
+      tagColor: "bg-[#5e3115]",
+      waText: "Wardrobe",
+    },
+    {
+      id: "sofa-set",
+      title: t.products.sofa.title,
+      description: t.products.sofa.desc,
+      image: "/product_sofa.png",
+      tag: t.products.sofa.tag,
+      tagColor: "bg-[#743b16]",
+      waText: "Sofa Set",
+    },
+    {
+      id: "wooden-doors",
+      title: t.products.door.title,
+      description: t.products.door.desc,
+      image: "/product_door.png",
+      tag: t.products.door.tag,
+      tagColor: "bg-[#b06318]",
+      waText: "Wooden Door",
+    },
+    {
+      id: "wood-articles",
+      title: t.products.articles.title,
+      description: t.products.articles.desc,
+      image: "/furniture_collection.png",
+      tag: t.products.articles.tag,
+      tagColor: "bg-[#c97d20]",
+      waText: "Wood Working Articles",
+    },
+  ];
+
   return (
     <section id="services" className="py-24 lg:py-32 bg-[#1a0f08] overflow-hidden relative">
       {/* Background pattern */}
@@ -77,7 +81,7 @@ export default function ServicesSection() {
           <div className="flex items-center justify-center gap-3 mb-5">
             <div className="wood-divider" />
             <span className="text-[#c97d20] text-xs font-inter font-semibold tracking-[0.18em] uppercase">
-              What We Make
+              {t.servicesLabel}
             </span>
             <div className="wood-divider" />
           </div>
@@ -85,13 +89,11 @@ export default function ServicesSection() {
             className="font-playfair font-bold text-white mb-4"
             style={{ fontSize: "clamp(2rem, 3.5vw, 2.75rem)" }}
           >
-            Wood Working Articles &{" "}
-            <span className="shimmer-text">All Kind Of Furniture</span>
+            {t.servicesHeading1}{" "}
+            <span className="shimmer-text">{t.servicesHeading2}</span>
           </h2>
           <p className="text-white/60 font-inter max-w-2xl mx-auto leading-relaxed">
-            From a single decorative piece to complete home furnishing — every
-            item is handcrafted with care, quality materials, and your exact
-            requirements in mind.
+            {t.servicesSub}
           </p>
         </div>
 
@@ -129,7 +131,7 @@ export default function ServicesSection() {
                   target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-[#e8bb6e] text-sm font-inter font-semibold hover:gap-3 transition-all duration-200"
                 >
-                  Enquire Now
+                  {t.enquire}
                   <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
@@ -140,7 +142,7 @@ export default function ServicesSection() {
         {/* Bottom CTA */}
         <div className="text-center mt-14 reveal">
           <p className="text-white/50 font-inter text-sm mb-5">
-            Don't see what you need? We build anything in wood.
+            {t.servicesCtaText}
           </p>
           <a
             href="http://wa.me/9879254882?text=I%20want%20to%20make%20custom%20furniture"
@@ -148,7 +150,7 @@ export default function ServicesSection() {
             id="services-custom-cta"
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-[#c97d20] to-[#8f4a16] text-white font-inter font-semibold shadow-lg shadow-amber-900/40 hover:shadow-xl hover:scale-105 transition-all duration-300"
           >
-            Request Custom Order
+            {t.servicesCtaBtn}
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>

@@ -1,45 +1,49 @@
+"use client";
 import { Sparkles, Layers, CircleDollarSign, Clock, Award, MapPin, Star } from "lucide-react";
-
-const reasons = [
-  {
-    id: "custom-design",
-    icon: Sparkles,
-    title: "100% Custom Design",
-    description: "Every piece is built from scratch based on your dimensions, style preferences, and space requirements. No catalogue limitations.",
-  },
-  {
-    id: "premium-wood",
-    icon: Layers,
-    title: "Premium Quality Wood",
-    description: "We use only the finest grade teak, sheesham, and hardwoods — sourced for durability, grain beauty, and resistance to warping.",
-  },
-  {
-    id: "fair-pricing",
-    icon: CircleDollarSign,
-    title: "Honest & Fair Pricing",
-    description: "Transparent pricing with no hidden costs. We provide a clear quote before work begins and stick to it.",
-  },
-  {
-    id: "timely-delivery",
-    icon: Clock,
-    title: "On-Time Delivery",
-    description: "We respect your time and schedule. Every project comes with a clear timeline that we commit to and deliver on.",
-  },
-  {
-    id: "experienced-craftsmen",
-    icon: Award,
-    title: "Skilled Craftsmen",
-    description: "15+ years of woodworking mastery under Kalpesh M. Makwana's personal supervision. Every joint, every finish — done right.",
-  },
-  {
-    id: "local-trust",
-    icon: MapPin,
-    title: "Trusted in Morbi & Gujarat",
-    description: "Over 2000 satisfied customers across Morbi and Gujarat trust us for their home and commercial furniture needs.",
-  },
-];
+import { useLang } from "../context/LanguageContext";
 
 export default function WhyUsSection() {
+  const { t } = useLang();
+  
+  const reasons = [
+    {
+      id: "custom-design",
+      icon: Sparkles,
+      title: t.whyReasons.custom.title,
+      description: t.whyReasons.custom.desc,
+    },
+    {
+      id: "premium-wood",
+      icon: Layers,
+      title: t.whyReasons.wood.title,
+      description: t.whyReasons.wood.desc,
+    },
+    {
+      id: "fair-pricing",
+      icon: CircleDollarSign,
+      title: t.whyReasons.price.title,
+      description: t.whyReasons.price.desc,
+    },
+    {
+      id: "timely-delivery",
+      icon: Clock,
+      title: t.whyReasons.delivery.title,
+      description: t.whyReasons.delivery.desc,
+    },
+    {
+      id: "experienced-craftsmen",
+      icon: Award,
+      title: t.whyReasons.craftsmen.title,
+      description: t.whyReasons.craftsmen.desc,
+    },
+    {
+      id: "local-trust",
+      icon: MapPin,
+      title: t.whyReasons.trust.title,
+      description: t.whyReasons.trust.desc,
+    },
+  ];
+
   return (
     <section id="why-us" className="py-24 lg:py-32 bg-[#fdf8f0] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,7 +53,7 @@ export default function WhyUsSection() {
           <div className="flex items-center justify-center gap-3 mb-5">
             <div className="wood-divider" />
             <span className="text-[#c97d20] text-xs font-inter font-semibold tracking-[0.18em] uppercase">
-              Why Choose Us
+              {t.whyLabel}
             </span>
             <div className="wood-divider" />
           </div>
@@ -57,12 +61,11 @@ export default function WhyUsSection() {
             className="font-playfair font-bold text-[#351706] mb-4"
             style={{ fontSize: "clamp(2rem, 3.5vw, 2.75rem)" }}
           >
-            The Kalpana Wood{" "}
-            <span className="text-[#c97d20] italic">Difference</span>
+            {t.whyHeading1}{" "}
+            <span className="text-[#c97d20] italic">{t.whyHeading2}</span>
           </h2>
           <p className="text-[#5e3115]/70 font-inter max-w-2xl mx-auto leading-relaxed">
-            When you choose Kalpana Wood, you choose decades of expertise,
-            uncompromising quality, and furniture that truly lasts a lifetime.
+            {t.whySub}
           </p>
         </div>
 
@@ -99,9 +102,7 @@ export default function WhyUsSection() {
           </div>
 
           <p className="font-playfair italic text-white text-xl sm:text-2xl leading-relaxed mb-6 relative z-10 max-w-3xl mx-auto -mt-10">
-            Kalpesh bhai made our complete bedroom set exactly as we wanted.
-            Quality is outstanding and the price was very reasonable. Highly
-            recommended to everyone in Morbi!
+            {t.testiQuote}
           </p>
 
           <div className="flex items-center justify-center gap-3 relative z-10">
@@ -109,8 +110,8 @@ export default function WhyUsSection() {
               R
             </div>
             <div className="text-left">
-              <div className="text-[#e8bb6e] font-inter font-semibold text-sm">Rajesh Patel</div>
-              <div className="text-white/50 font-inter text-xs">Satisfied Customer, Morbi</div>
+              <div className="text-[#e8bb6e] font-inter font-semibold text-sm">{t.testiName}</div>
+              <div className="text-white/50 font-inter text-xs">{t.testiDesc}</div>
             </div>
             <div className="flex gap-1 ml-2">
               {[...Array(5)].map((_, i) => (

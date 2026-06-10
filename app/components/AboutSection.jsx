@@ -1,14 +1,17 @@
+"use client";
 import Image from "next/image";
 import { CheckCircle2, Layers, MapPin, Hammer, ArrowRight } from "lucide-react";
-
-const highlights = [
-  { icon: CheckCircle2, text: "100% custom-built to your exact specifications" },
-  { icon: Layers,       text: "Premium teak, sheesham & hardwood materials" },
-  { icon: MapPin,       text: "Serving Morbi & all of Gujarat since 2008" },
-  { icon: Hammer,       text: "Expert craftsmanship with lifetime durability" },
-];
+import { useLang } from "../context/LanguageContext";
 
 export default function AboutSection() {
+  const { t } = useLang();
+  const highlights = [
+    { icon: CheckCircle2, text: t.aboutLi1 },
+    { icon: Layers,       text: t.aboutLi2 },
+    { icon: MapPin,       text: t.aboutLi3 },
+    { icon: Hammer,       text: t.aboutLi4 },
+  ];
+
   return (
     <section id="about" className="py-24 lg:py-32 bg-[#fdf8f0] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,7 +34,7 @@ export default function AboutSection() {
             <div className="absolute -bottom-6 -right-4 sm:right-4 bg-gradient-to-br from-[#c97d20] to-[#8f4a16] rounded-2xl p-5 shadow-xl shadow-amber-900/30 text-white">
               <div className="font-playfair font-bold text-4xl leading-none">15+</div>
               <div className="text-xs font-inter font-medium text-amber-200 mt-1 uppercase tracking-wide">
-                Years of<br />Craftsmanship
+                {t.aboutBadgeTop}<br />{t.aboutBadgeBot}
               </div>
             </div>
 
@@ -44,7 +47,7 @@ export default function AboutSection() {
             <div className="flex items-center gap-3 mb-5">
               <div className="wood-divider" />
               <span className="text-[#c97d20] text-xs font-inter font-semibold tracking-[0.18em] uppercase">
-                Our Story
+                {t.aboutLabel}
               </span>
             </div>
 
@@ -52,21 +55,16 @@ export default function AboutSection() {
               className="font-playfair font-bold text-[#351706] leading-tight mb-6"
               style={{ fontSize: "clamp(2rem, 3.5vw, 2.75rem)" }}
             >
-              Meet{" "}
-              <span className="text-[#c97d20] italic">Kalpesh M. Makwana</span>
-              <br />& Kalpana Wood
+              {t.aboutHeading1}{" "}
+              <span className="text-[#c97d20] italic">{t.aboutHeading2}</span>
+              <br />{t.aboutHeading3}
             </h2>
 
             <p className="text-[#5e3115]/80 font-inter text-lg leading-relaxed mb-4">
-              Founded with a deep love for wood and craftsmanship, Kalpana Wood
-              has been delivering premium, custom-built furniture from the heart
-              of Morbi, Gujarat for over 15 years.
+              {t.aboutP1}
             </p>
             <p className="text-[#5e3115]/70 font-inter leading-relaxed mb-8">
-              Every piece we create is a testament to traditional Indian
-              woodworking heritage fused with modern design sensibilities.
-              From intricate wood-working articles to complete home furniture
-              solutions — we build what you imagine.
+              {t.aboutP2}
             </p>
 
             <ul className="space-y-4 mb-10">
@@ -86,7 +84,7 @@ export default function AboutSection() {
               id="about-whatsapp-cta"
               className="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#c97d20] to-[#8f4a16] text-white font-inter font-semibold shadow-lg shadow-amber-900/30 hover:shadow-xl hover:shadow-amber-800/40 hover:scale-105 transition-all duration-300"
             >
-              Talk to Kalpesh
+              {t.aboutCta}
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>

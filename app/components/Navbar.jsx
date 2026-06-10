@@ -2,20 +2,23 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X, MessageCircle, TreePine } from "lucide-react";
-
-const navLinks = [
-  { label: "Home",    href: "#home" },
-  { label: "About",   href: "#about" },
-  { label: "Services",href: "#services" },
-  { label: "Why Us",  href: "#why-us" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Contact", href: "#contact" },
-];
+import { useLang } from "../context/LanguageContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar() {
   const [scrolled, setScrolled]     = useState(false);
   const [menuOpen, setMenuOpen]     = useState(false);
   const [activeSection, setActive]  = useState("home");
+  const { t } = useLang();
+
+  const navLinks = [
+    { label: t.navHome,    href: "#home" },
+    { label: t.navAbout,   href: "#about" },
+    { label: t.navServices,href: "#services" },
+    { label: t.navWhyUs,  href: "#why-us" },
+    { label: t.navGallery, href: "#gallery" },
+    { label: t.navContact, href: "#contact" },
+  ];
 
   useEffect(() => {
     const onScroll = () => {
@@ -87,6 +90,10 @@ export default function Navbar() {
 
           {/* CTA + Hamburger */}
           <div className="flex items-center gap-3">
+            <div className="hidden sm:block">
+              <LanguageSwitcher />
+            </div>
+
             <a
               href="http://wa.me/9879254882?text=I%20want%20to%20make%20custom%20furniture"
               target="_blank" rel="noopener noreferrer"
@@ -94,7 +101,7 @@ export default function Navbar() {
               className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full text-sm font-inter font-semibold text-white bg-gradient-to-r from-[#25d366] to-[#128c7e] hover:shadow-lg hover:shadow-green-500/30 transition-all duration-200 hover:scale-105"
             >
               <MessageCircle className="w-4 h-4" />
-              WhatsApp
+              {t.navWhatsapp}
             </a>
 
             <button
@@ -129,13 +136,16 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <div className="mt-4 mb-2">
+            <LanguageSwitcher isMobile={true} />
+          </div>
           <a
             href="http://wa.me/9879254882?text=I%20want%20to%20make%20custom%20furniture"
             target="_blank" rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 mt-3 px-4 py-3 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-[#25d366] to-[#128c7e]"
           >
             <MessageCircle className="w-4 h-4" />
-            Chat on WhatsApp
+            {t.navChatWhatsapp}
           </a>
         </div>
       </div>

@@ -1,5 +1,6 @@
-import { Playfair_Display, Inter } from "next/font/google";
+import { Playfair_Display, Inter, Noto_Sans_Gujarati, Noto_Sans_Devanagari } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "./context/LanguageContext";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -13,6 +14,19 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
+
+const gujarati = Noto_Sans_Gujarati({
+  variable: "--font-gujarati",
+  subsets: ["gujarati"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const devanagari = Noto_Sans_Devanagari({
+  variable: "--font-devanagari",
+  subsets: ["devanagari"],
+  weight: ["400", "500", "600", "700"],
+});
+
 
 export const metadata = {
   title: "Kalpana Wood – Premium Custom Furniture in Morbi, Gujarat",
@@ -32,9 +46,13 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${inter.variable} h-full`}
+      className={`${playfair.variable} ${inter.variable} ${gujarati.variable} ${devanagari.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col antialiased">{children}</body>
+      <body className="min-h-full flex flex-col antialiased">
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
+      </body>
     </html>
   );
 }

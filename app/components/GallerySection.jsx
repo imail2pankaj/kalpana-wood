@@ -1,17 +1,21 @@
+"use client";
 import { ZoomIn, MessageCircle, ArrowRight } from "lucide-react";
-
-const galleryItems = [
-  { base: "product_bedroom",       alt: "Custom bedroom furniture set",     label: "Bedroom Suite",   tall: true },
-  { base: "product_dining",        alt: "Handcrafted teak dining table",    label: "Dining Set" },
-  { base: "wood_hero",             alt: "Kalpana Wood showroom interior",   label: "Showroom" },
-  { base: "product_wardrobe",      alt: "Custom wooden wardrobe almirah",   label: "Wardrobe" },
-  { base: "about_workshop",        alt: "Woodworking craftsmanship workshop",label: "Workshop" },
-  { base: "product_sofa",          alt: "Handcrafted wooden sofa set",      label: "Sofa Set" },
-  { base: "product_door",          alt: "Ornate carved solid wood door",    label: "Carved Doors" },
-  { base: "furniture_collection",  alt: "Complete furniture collection",    label: "Collection" },
-];
+import { useLang } from "../context/LanguageContext";
 
 export default function GallerySection() {
+  const { t } = useLang();
+  
+  const galleryItems = [
+    { base: "product_bedroom",       alt: "Custom bedroom furniture set",     label: t.galleryItems.bedroom,   tall: true },
+    { base: "product_dining",        alt: "Handcrafted teak dining table",    label: t.galleryItems.dining },
+    { base: "wood_hero",             alt: "Kalpana Wood showroom interior",   label: t.galleryItems.showroom },
+    { base: "product_wardrobe",      alt: "Custom wooden wardrobe almirah",   label: t.galleryItems.wardrobe },
+    { base: "about_workshop",        alt: "Woodworking craftsmanship workshop",label: t.galleryItems.workshop },
+    { base: "product_sofa",          alt: "Handcrafted wooden sofa set",      label: t.galleryItems.sofa },
+    { base: "product_door",          alt: "Ornate carved solid wood door",    label: t.galleryItems.door },
+    { base: "furniture_collection",  alt: "Complete furniture collection",    label: t.galleryItems.collection },
+  ];
+
   return (
     <section id="gallery" className="py-24 lg:py-32 bg-[#2c1a0e] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,7 +25,7 @@ export default function GallerySection() {
           <div className="flex items-center justify-center gap-3 mb-5">
             <div className="wood-divider" />
             <span className="text-[#c97d20] text-xs font-inter font-semibold tracking-[0.18em] uppercase">
-              Our Work
+              {t.galleryLabel}
             </span>
             <div className="wood-divider" />
           </div>
@@ -29,12 +33,11 @@ export default function GallerySection() {
             className="font-playfair font-bold text-white mb-4"
             style={{ fontSize: "clamp(2rem, 3.5vw, 2.75rem)" }}
           >
-            Crafted With{" "}
-            <span className="shimmer-text italic">Passion</span>
+            {t.galleryHeading1}{" "}
+            <span className="shimmer-text italic">{t.galleryHeading2}</span>
           </h2>
           <p className="text-white/55 font-inter max-w-xl mx-auto">
-            A glimpse into the furniture and wood-working articles we've created
-            for our happy customers across Gujarat.
+            {t.gallerySub}
           </p>
         </div>
 
@@ -83,7 +86,7 @@ export default function GallerySection() {
         {/* CTA */}
         <div className="text-center mt-14 reveal">
           <p className="text-white/50 font-inter text-sm mb-5">
-            Like what you see? Let's create something for your home.
+            {t.galleryCtaText}
           </p>
           <a
             href="http://wa.me/9879254882?text=I%20want%20to%20make%20custom%20furniture"
@@ -92,7 +95,7 @@ export default function GallerySection() {
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 border-[#c97d20] text-[#e8bb6e] font-inter font-semibold hover:bg-[#c97d20] hover:text-white transition-all duration-300"
           >
             <MessageCircle className="w-5 h-5" />
-            Order on WhatsApp
+            {t.galleryCtaBtn}
           </a>
         </div>
       </div>

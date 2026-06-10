@@ -1,26 +1,29 @@
+"use client";
 import { Phone, MessageCircle, MapPin, TreePine } from "lucide-react";
-
-const quickLinks = [
-  ["Home",     "#home"],
-  ["About",    "#about"],
-  ["Services", "#services"],
-  ["Gallery",  "#gallery"],
-  ["Contact",  "#contact"],
-];
-
-const productList = [
-  "Bedroom Sets", "Dining Tables", "Wardrobes",
-  "Sofa Sets", "Wooden Doors", "Wood Articles",
-];
-
-const socials = [
-  { id: "footer-phone-btn",    href: "tel:+919879254882",   icon: Phone,         label: "Call us",    external: false },
-  { id: "footer-whatsapp-btn", href: "http://wa.me/9879254882?text=I%20want%20to%20make%20custom%20furniture", icon: MessageCircle, label: "WhatsApp", external: true },
-  { id: "footer-maps-btn",     href: "https://maps.google.com/?q=Lati+Plot+Main+Rd,+Morbi,+Gujarat+363641", icon: MapPin, label: "Google Maps", external: true },
-];
+import { useLang } from "../context/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLang();
   const year = new Date().getFullYear();
+  
+  const quickLinks = [
+    [t.navHome,     "#home"],
+    [t.navAbout,    "#about"],
+    [t.navServices, "#services"],
+    [t.navGallery,  "#gallery"],
+    [t.navContact,  "#contact"],
+  ];
+
+  const productList = [
+    t.p1, t.p2, t.p3,
+    t.p4, t.p5, t.p6,
+  ];
+
+  const socials = [
+    { id: "footer-phone-btn",    href: "tel:+919879254882",   icon: Phone,         label: "Call us",    external: false },
+    { id: "footer-whatsapp-btn", href: "http://wa.me/9879254882?text=I%20want%20to%20make%20custom%20furniture", icon: MessageCircle, label: "WhatsApp", external: true },
+    { id: "footer-maps-btn",     href: "https://maps.google.com/?q=Lati+Plot+Main+Rd,+Morbi,+Gujarat+363641", icon: MapPin, label: "Google Maps", external: true },
+  ];
 
   return (
     <footer className="bg-[#1a0f08] border-t border-white/5">
@@ -41,9 +44,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-white/50 font-inter text-sm leading-relaxed mb-5 max-w-xs">
-              Premium handcrafted furniture and wood-working articles by{" "}
-              <span className="text-[#e8bb6e]">Kalpesh M. Makwana</span> from
-              Morbi, Gujarat. Every piece, built to last a lifetime.
+              {t.tagline}
             </p>
             <div className="flex gap-3">
               {socials.map(({ id, href, icon: Icon, label, external }) => (
@@ -64,7 +65,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-inter font-semibold text-sm mb-5">Quick Links</h4>
+            <h4 className="text-white font-inter font-semibold text-sm mb-5">{t.quickLinks}</h4>
             <ul className="space-y-3">
               {quickLinks.map(([label, href]) => (
                 <li key={href}>
@@ -78,7 +79,7 @@ export default function Footer() {
 
           {/* Products */}
           <div>
-            <h4 className="text-white font-inter font-semibold text-sm mb-5">Our Products</h4>
+            <h4 className="text-white font-inter font-semibold text-sm mb-5">{t.ourProducts}</h4>
             <ul className="space-y-3">
               {productList.map((item) => (
                 <li key={item}>
@@ -92,10 +93,10 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/30 font-inter text-xs text-center">
-            © {year} Kalpana Wood by Kalpesh M. Makwana. All rights reserved.
+            {t.copyright}
           </p>
           <div className="flex items-center gap-2">
-            <span className="text-white/20 font-inter text-xs">Morbi, Gujarat, India</span>
+            <span className="text-white/20 font-inter text-xs">{t.location}</span>
             <span className="text-white/20">·</span>
             <span className="text-white/20 font-inter text-xs">363641</span>
           </div>
