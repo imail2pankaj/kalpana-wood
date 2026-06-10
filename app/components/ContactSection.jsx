@@ -1,5 +1,5 @@
 "use client";
-import { Phone, MessageCircle, MapPin, Clock, ArrowRight } from "lucide-react";
+import { Phone, MessageCircle, MapPin, Clock, ArrowRight, Instagram } from "lucide-react";
 import { useLang } from "../context/LanguageContext";
 
 export default function ContactSection() {
@@ -24,6 +24,16 @@ export default function ContactSection() {
       href: "http://wa.me/9879254882?text=I%20want%20to%20make%20custom%20furniture",
       action: t.contactWaAction,
       color: "from-[#25d366] to-[#128c7e]",
+      external: true,
+    },
+    {
+      id: "instagram",
+      icon: Instagram,
+      label: "Instagram",
+      value: "@kalpana_wood",
+      href: "https://instagram.com/kalpana_wood",
+      action: "Instagram",
+      color: "from-[#f09433] via-[#e6683c] to-[#bc1888]",
       external: true,
     },
     {
@@ -78,23 +88,25 @@ export default function ContactSection() {
                 id={`contact-${id}`}
                 className="bg-white rounded-2xl p-6 border border-[#e8bb6e]/20 shadow-sm hover:shadow-lg hover:shadow-amber-900/10 transition-all duration-300 group"
               >
-                <div className="flex items-center gap-5">
-                  <div className={`flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${color} text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-[#5e3115]/50 font-inter text-xs font-semibold uppercase tracking-wider mb-1">
-                      {label}
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5">
+                  <div className="flex items-center gap-4 sm:gap-5 flex-1 min-w-0">
+                    <div className={`flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br ${color} text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300`}>
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
-                    <div className="text-[#351706] font-inter font-semibold text-sm sm:text-base truncate">
-                      {value}
+                    <div className="flex-1 min-w-0">
+                      <div className="text-[#5e3115]/50 font-inter text-xs font-semibold uppercase tracking-wider mb-0.5 sm:mb-1">
+                        {label}
+                      </div>
+                      <div className="text-[#351706] font-inter font-semibold text-sm sm:text-base truncate">
+                        {value}
+                      </div>
                     </div>
                   </div>
                   <a
                     href={href}
                     target={external ? "_blank" : undefined}
                     rel={external ? "noopener noreferrer" : undefined}
-                    className={`flex-shrink-0 px-4 py-2 rounded-full bg-gradient-to-r ${color} text-white text-xs font-inter font-semibold hover:opacity-90 hover:scale-105 transition-all duration-200 whitespace-nowrap`}
+                    className={`flex-shrink-0 text-center sm:text-left px-4 py-2.5 sm:py-2 rounded-full sm:rounded-full bg-gradient-to-r ${color} text-white text-xs font-inter font-semibold hover:opacity-90 hover:scale-105 transition-all duration-200 whitespace-nowrap w-full sm:w-auto`}
                   >
                     {action}
                   </a>
@@ -142,21 +154,23 @@ export default function ContactSection() {
               />
             </div>
 
-            <div className="mt-4 bg-gradient-to-r from-[#351706] to-[#5e3115] rounded-2xl p-5 flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-[#c97d20]/30 flex-shrink-0 flex items-center justify-center">
-                <MapPin className="w-5 h-5 text-[#e8bb6e]" />
-              </div>
-              <div className="flex-1">
-                <div className="text-white font-inter font-semibold text-sm">{t.mapWorkshop}</div>
-                <div className="text-white/60 font-inter text-xs mt-0.5">
-                  {t.mapAddress}
+            <div className="mt-4 bg-gradient-to-r from-[#351706] to-[#5e3115] rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center gap-4">
+              <div className="flex items-center gap-4 flex-1 min-w-0">
+                <div className="w-10 h-10 rounded-xl bg-[#c97d20]/30 flex-shrink-0 flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-[#e8bb6e]" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-white font-inter font-semibold text-sm truncate">{t.mapWorkshop}</div>
+                  <div className="text-white/60 font-inter text-xs mt-0.5 line-clamp-2 sm:truncate">
+                    {t.mapAddress}
+                  </div>
                 </div>
               </div>
               <a
                 href="https://maps.google.com/?q=Lati+Plot+Main+Rd,+Morbi,+Gujarat+363641"
                 target="_blank" rel="noopener noreferrer"
                 id="contact-directions-btn"
-                className="flex-shrink-0 px-4 py-2 rounded-full bg-[#c97d20] text-white text-xs font-inter font-semibold hover:bg-[#e8bb6e] hover:text-[#351706] transition-colors"
+                className="flex-shrink-0 w-full sm:w-auto text-center px-4 py-2.5 sm:py-2 rounded-full bg-[#c97d20] text-white text-xs font-inter font-semibold hover:bg-[#e8bb6e] hover:text-[#351706] transition-colors"
               >
                 {t.directions}
                 <ArrowRight className="w-3 h-3 inline ml-1" />

@@ -1,5 +1,5 @@
 "use client";
-import { Phone, MessageCircle, MapPin, TreePine } from "lucide-react";
+import { Phone, MessageCircle, MapPin, TreePine, Instagram } from "lucide-react";
 import { useLang } from "../context/LanguageContext";
 
 export default function Footer() {
@@ -22,6 +22,7 @@ export default function Footer() {
   const socials = [
     { id: "footer-phone-btn",    href: "tel:+919879254882",   icon: Phone,         label: "Call us",    external: false },
     { id: "footer-whatsapp-btn", href: "http://wa.me/9879254882?text=I%20want%20to%20make%20custom%20furniture", icon: MessageCircle, label: "WhatsApp", external: true },
+    { id: "footer-instagram-btn", href: "https://instagram.com/kalpana_wood", icon: Instagram, label: "Instagram", external: true },
     { id: "footer-maps-btn",     href: "https://maps.google.com/?q=Lati+Plot+Main+Rd,+Morbi,+Gujarat+363641", icon: MapPin, label: "Google Maps", external: true },
   ];
 
