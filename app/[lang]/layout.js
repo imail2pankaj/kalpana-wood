@@ -1,6 +1,7 @@
 import { Playfair_Display, Inter, Noto_Sans_Gujarati, Noto_Sans_Devanagari } from "next/font/google";
-import "./globals.css";
-import { LanguageProvider } from "./context/LanguageContext";
+import "../globals.css";
+import { LanguageProvider } from "../context/LanguageContext";
+import { translations } from "../../lib/translations";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -28,28 +29,36 @@ const devanagari = Noto_Sans_Devanagari({
 });
 
 
-export const metadata = {
-  title: "Kalpana Wood – Premium Custom Furniture in Morbi, Gujarat",
-  description:
-    "Kalpana Wood crafts premium custom wooden furniture in Morbi, Gujarat. Handcrafted beds, wardrobes, dining sets, and more. Contact us on +91 9879254882 or WhatsApp to bring your vision to life.",
-  keywords:
-    "custom furniture Morbi, wooden furniture Gujarat, handcrafted furniture, teak furniture, Kalpana Wood",
-  openGraph: {
-    title: "Kalpana Wood – Premium Custom Furniture",
-    description:
-      "Handcrafted custom wooden furniture from Morbi, Gujarat. Quality craftsmanship, timeless designs.",
-    type: "website",
-  },
-};
+export async function generateMetadata({ params }) {
+  const { lang } = await params;
+  const t = translations[lang] || translations.en;
+  
+  return {
+    title: `Kalpana Wood – Premium Custom Furniture`,
+    description: t.tagline,
+    keywords: "custom furniture Morbi, wooden furniture Gujarat, handcrafted furniture, teak furniture, Kalpana Wood",
+    openGraph: {
+      title: "Kalpana Wood – Premium Custom Furniture",
+      description: t.tagline,
+      type: "website",
+    },
+  };
+}
 
-export default function RootLayout({ children }) {
+export async function generateStaticParams() {
+  return [{ lang: 'en' }, { lang: 'hi' }, { lang: 'gu' }];
+}
+
+export default async function RootLayout({ children, params }) {
+  const { lang } = await params;
+
   return (
     <html
-      lang="en"
+      lang={lang}
       className={`${playfair.variable} ${inter.variable} ${gujarati.variable} ${devanagari.variable} h-full`}
     >
       <body className="min-h-full flex flex-col antialiased">
-        <LanguageProvider>
+        <LanguageProvider lang={lang}>
           {children}
         </LanguageProvider>
       </body>

@@ -1,9 +1,19 @@
 "use client";
 
 import { useLang } from "../context/LanguageContext";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function LanguageSwitcher({ isMobile = false }) {
-  const { lang, setLang } = useLang();
+  const { lang } = useLang();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLangChange = (code) => {
+    if (!pathname) return;
+    const segments = pathname.split("/");
+    segments[1] = code;
+    router.push(segments.join("/"));
+  };
 
   const options = [
     { code: "en", label: "EN" },
@@ -20,7 +30,7 @@ export default function LanguageSwitcher({ isMobile = false }) {
       {options.map(({ code, label }) => (
         <button
           key={code}
-          onClick={() => setLang(code)}
+          onClick={() => handleLangChange(code)}
           className={`px-3 py-1.5 rounded-full text-xs font-inter font-semibold transition-all duration-200 ${
             lang === code
               ? "bg-[#c97d20] text-white shadow-md"
