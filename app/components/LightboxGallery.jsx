@@ -6,19 +6,19 @@ export default function LightboxGallery() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Using the images provided by the user. 
-  // We assume they will be saved as 1.webp through 10.webp in public/gallery/
+  // Using the exact images provided by the user in the attachments.
   const images = [
-    { src: "/gallery/1.webp", alt: "Bedroom interior" },
-    { src: "/gallery/2.webp", alt: "Bedroom wall decor" },
-    { src: "/gallery/3.webp", alt: "Bathroom vanity" },
-    { src: "/gallery/4.webp", alt: "Study desk and mirror" },
-    { src: "/gallery/5.webp", alt: "Custom bed frame with wooden backdrop" },
-    { src: "/gallery/6.webp", alt: "Wooden wardrobe with carved lines" },
-    { src: "/gallery/7.webp", alt: "Wardrobe with teal accent panels" },
-    { src: "/gallery/8.webp", alt: "Wardrobe with artistic leaf patterns" },
-    { src: "/gallery/9.webp", alt: "Upholstered bed with grid wall paneling" },
-    { src: "/gallery/10.webp", alt: "Modern four-poster canopy bed" },
+    { src: "/gallery/1.jpg", alt: "Kalpana Wood custom furniture project 1" },
+    { src: "/gallery/2.jpg", alt: "Kalpana Wood custom furniture project 2" },
+    { src: "/gallery/3.jpg", alt: "Kalpana Wood custom furniture project 3" },
+    { src: "/gallery/4.jpg", alt: "Kalpana Wood custom furniture project 4" },
+    { src: "/gallery/5.jpg", alt: "Kalpana Wood custom furniture project 5" },
+    { src: "/gallery/6.jpg", alt: "Kalpana Wood custom furniture project 6" },
+    { src: "/gallery/7.jpg", alt: "Kalpana Wood custom furniture project 7" },
+    { src: "/gallery/8.jpg", alt: "Kalpana Wood custom furniture project 8" },
+    { src: "/gallery/9.jpg", alt: "Kalpana Wood custom furniture project 9" },
+    { src: "/gallery/10.jpg", alt: "Kalpana Wood custom furniture project 10" },
+    { src: "/gallery/11.jpg", alt: "Kalpana Wood custom furniture project 11" },
   ];
 
   const openLightbox = (index) => {

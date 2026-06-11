@@ -67,9 +67,9 @@ export default function Navbar() {
 
           {/* Logo */}
           <a href="#home" onClick={(e) => scroll(e, "#home")} id="nav-logo"
-            className="flex items-center gap-2 group">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-              <img src="/logo.png" alt="Kalpana Wood" className="w-full h-full object-contain drop-shadow-md" />
+            className="flex items-center gap-3 group">
+            <div className="w-20 h-12 sm:w-24 sm:h-14 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
+              <img src="/logo.png?v=2" alt="Kalpana Wood" className="w-full h-full object-contain drop-shadow-md" />
             </div>
             <div>
               <div className="font-playfair font-bold text-white text-lg sm:text-xl leading-tight">
