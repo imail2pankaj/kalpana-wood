@@ -53,8 +53,8 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#c97d20] to-[#8f4a16] flex items-center justify-center">
-                <TreePine className="w-6 h-6 text-white" />
+              <div className="w-16 h-10 flex items-center justify-center">
+                <img src="/logo.png?v=2" alt="Kalpana Wood" className="w-full h-full object-contain drop-shadow-md" />
               </div>
               <div>
                 <div className="font-playfair font-bold text-white text-lg">Kalpana Wood</div>
