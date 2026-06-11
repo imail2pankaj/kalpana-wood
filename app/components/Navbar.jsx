@@ -9,21 +9,24 @@ export default function Navbar() {
   const [scrolled, setScrolled]     = useState(false);
   const [menuOpen, setMenuOpen]     = useState(false);
   const [activeSection, setActive]  = useState("home");
-  const { t } = useLang();
+  const { t, lang } = useLang();
 
   const navLinks = [
-    { label: t.navHome,    href: "#home" },
-    { label: t.navAbout,   href: "#about" },
-    { label: t.navServices,href: "#services" },
-    { label: t.navWhyUs,  href: "#why-us" },
-    { label: t.navGallery, href: "#gallery" },
-    { label: t.navContact, href: "#contact" },
+    { label: t.navHome,    href: `/${lang}/#home` },
+    { label: t.navAbout,   href: `/${lang}/#about` },
+    { label: t.navServices,href: `/${lang}/#services` },
+    { label: t.navWhyUs,  href: `/${lang}/#why-us` },
+    { label: t.navGallery, href: `/${lang}/gallery` },
+    { label: t.navContact, href: `/${lang}/#contact` },
   ];
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 20);
-      const ids = navLinks.map((l) => l.href.slice(1));
+      const ids = navLinks.map((l) => {
+        const parts = l.href.split("#");
+        return parts.length > 1 ? parts[1] : null;
+      }).filter(Boolean);
       for (const id of [...ids].reverse()) {
         const el = document.getElementById(id);
         if (el && window.scrollY >= el.offsetTop - 100) {
@@ -34,12 +37,21 @@ export default function Navbar() {
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [navLinks]);
 
   const scroll = (e, href) => {
-    e.preventDefault();
-    document.getElementById(href.slice(1))?.scrollIntoView({ behavior: "smooth" });
-    setMenuOpen(false);
+    if (href.includes("#")) {
+      const id = href.split("#")[1];
+      const el = document.getElementById(id);
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth" });
+        setMenuOpen(false);
+      }
+    } else {
+      // Allow default navigation for non-anchor links
+      setMenuOpen(false);
+    }
   };
 
   return (
@@ -55,9 +67,9 @@ export default function Navbar() {
 
           {/* Logo */}
           <a href="#home" onClick={(e) => scroll(e, "#home")} id="nav-logo"
-            className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#c97d20] to-[#8f4a16] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-200">
-              <TreePine className="w-6 h-6 text-white" />
+            className="flex items-center gap-2 group">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
+              <img src="/logo.png" alt="Kalpana Wood" className="w-full h-full object-contain drop-shadow-md" />
             </div>
             <div>
               <div className="font-playfair font-bold text-white text-lg sm:text-xl leading-tight">
